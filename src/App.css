@@ -6,8 +6,8 @@
   display: grid;
   grid-template-areas:
     "header header"
-    "aside main";
-  grid-template-columns: 1fr 10fr;
+    "main aside";
+  grid-template-columns: 10fr 2fr;
   grid-template-rows: 60px 1fr;
 }
 
@@ -18,6 +18,14 @@
 header {
   grid-area: header;
   background-color: rgb(89, 167, 89);
+  display: flex;
+  justify-content: space-between;
+}
+
+header div {
+  margin: auto 0;
+  display: flex;
+  vertical-align: center;
 }
 
 aside {
