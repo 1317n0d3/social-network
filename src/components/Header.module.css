@@ -1,0 +1,16 @@
+header {
+  grid-area: header;
+  background-color: rgb(89, 167, 89);
+  display: flex;
+  justify-content: space-between;
+}
+
+header img {
+  width: 60px;
+}
+
+header div {
+  margin: auto 0;
+  display: flex;
+  vertical-align: center;
+}
