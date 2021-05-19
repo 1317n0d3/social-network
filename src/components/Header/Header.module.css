@@ -5,10 +5,6 @@ header {
   justify-content: space-between;
 }
 
-header img {
-  width: 60px;
-}
-
 header div {
   margin: auto 0;
   display: flex;

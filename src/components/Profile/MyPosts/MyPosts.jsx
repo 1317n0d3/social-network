@@ -7,11 +7,11 @@ const MyPosts = () => {
     <div>
       My posts
       <div>
-        Your News
-        Send
+        <textarea></textarea>
+        <button>Send</button>
       </div>
-      <Post />
-      <Post />
+      <Post message="Hello" likeCount="0"/>
+      <Post message="My first post" likeCount="10"/>
     </div>
   );
 }
