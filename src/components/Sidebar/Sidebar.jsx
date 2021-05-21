@@ -1,15 +1,15 @@
 import React from 'react';
 import s from './Sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
       <aside>
         <ul>
-          <li><a>Profile</a></li>
-          <li><a>Messages</a></li>
-          <li><a>News</a></li>
-          <li><a>Music</a></li>
-          <li><a>Settings</a></li>
+          <li><a href='/profile'>Profile</a></li>
+          <li><a href='/dialogs'>Messages</a></li>
+          <li><a href='/news'>News</a></li>
+          <li><a href='/music'>Music</a></li>
+          <li><a href='/settings'>Settings</a></li>
         </ul>
       </aside>
   );
