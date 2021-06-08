@@ -12,17 +12,17 @@ import Settings from "./components/Settings/Settings";
 const App = () => {
   return (
     <BrowserRouter>
-    <div className="main-wrapper">
-      <Header />
-      <Sidebar />
-      <div className="main-wrapper__content">
-        <Route path='/profile' component={Profile} />
-        <Route path='/dialogs' component={Dialogs} />
-        <Route path='/news' component={News} />
-        <Route path='/music' component={Music} />
-        <Route path='/settings' component={Settings} />
+      <div className="main-wrapper">
+        <Header />
+        <Sidebar />
+        <div className="main-wrapper__content">
+          <Route path='/profile' component={Profile} />
+          <Route path='/dialogs' component={Dialogs} />
+          <Route path='/news' component={News} />
+          <Route path='/music' component={Music} />
+          <Route path='/settings' component={Settings} />
+        </div>
       </div>
-    </div>
     </BrowserRouter>
   );
 }
