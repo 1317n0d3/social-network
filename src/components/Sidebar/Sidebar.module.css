@@ -1,5 +1,6 @@
 aside {
   grid-area: aside;
+  background-color: #fff;
 }
 
 aside ul {
