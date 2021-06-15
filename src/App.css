@@ -1,5 +1,5 @@
 body {
-  background-color: #fafafb;
+  background-color: #f8f8f8;
 }
 
 .App {
@@ -10,11 +10,18 @@ body {
   display: grid;
   grid-template-areas:
     "header header"
-    "main aside";
-  grid-template-columns: 10fr 2fr;
+    "aside main";
+  grid-template-columns: 2fr 10fr;
   grid-template-rows: 60px 1fr;
 }
 
 main {
   grid-area: main;
+}
+
+main {
+  margin: 20px 40px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 7px;
 }

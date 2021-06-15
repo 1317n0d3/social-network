@@ -1,0 +1,32 @@
+.containerDialogs {
+  display: grid;
+  grid-template-areas: "sidebar content";
+  grid-template-columns: 4fr 8fr;
+  grid-template-rows: 1fr;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  grid-area: content;
+}
+
+.sidebarHeader {
+}
+
+.sidebarUsers {
+}
+
+.contentHeader {
+}
+
+.contentChat {
+}
