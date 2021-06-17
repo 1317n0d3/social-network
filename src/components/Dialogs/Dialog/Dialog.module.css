@@ -1,0 +1,11 @@
+.userCard {
+  padding: 7px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.userCard:hover {
+  background: #f8f8f8;
+  border-radius: 3px;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
+import Dialog from './Dialog/Dialog';
+import Message from './Message/Message';
 
 const Dialogs = (props) => {
   return (
@@ -8,14 +10,10 @@ const Dialogs = (props) => {
       <div className={s.containerDialogs}>
         <div className={s.sidebar}>
           <div className={s.users}>
-            <ul>
-              <NavLink to="/dialogs/1"><li className={s.userCard}>user 1</li></NavLink>
-              <NavLink to="/dialogs/2"><li className={s.userCard}>user 2</li></NavLink>
-              <NavLink to="/dialogs/3"><li className={s.userCard}>user 3</li></NavLink>
-              <NavLink to="/dialogs/4"><li className={s.userCard}>user 4</li></NavLink>
-              <NavLink to="/dialogs/5"><li className={s.userCard}>user 5</li></NavLink>
-              <NavLink to="/dialogs/6"><li className={s.userCard}>user 6</li></NavLink>
-            </ul>
+            <Dialog name="vasya" id="1" />
+            <Dialog name="sasha" id="2" />
+            <Dialog name="ivan" id="3" />
+            <Dialog name="pavel" id="4" />
           </div>
         </div>
 
@@ -26,8 +24,8 @@ const Dialogs = (props) => {
           </div>
           <div className={s.contentChat}>
             <div className={s.messages}>
-              <div>hello world</div>
-              <div>My first message</div>
+              <Message message="hello world" />
+              <Message message="My first message" />
             </div>
             <div className={s.sendMessage}>
               <textarea name="" id="" cols="70" rows="1"></textarea>
