@@ -5,12 +5,12 @@ import {NavLink} from 'react-router-dom';
 const Sidebar = (props) => {
   return (
       <aside>
-        <ul>
-          <li><NavLink to='/profile'>Profile</NavLink></li>
-          <li><NavLink to='/dialogs'>Messages</NavLink></li>
-          <li><NavLink to='/news'>News</NavLink></li>
-          <li><NavLink to='/music'>Music</NavLink></li>
-          <li><NavLink to='/settings'>Settings</NavLink></li>
+        <ul className={s.links}>
+          <NavLink to='/profile'><li>Profile</li></NavLink>
+          <NavLink to='/dialogs'><li>Messages</li></NavLink>
+          <NavLink to='/news'><li>News</li></NavLink>
+          <NavLink to='/music'><li>Music</li></NavLink>
+          <NavLink to='/settings'><li>Settings</li></NavLink>
         </ul>
       </aside>
   );

@@ -2,6 +2,7 @@ aside {
   grid-area: aside;
   background-color: #fff;
   min-height: calc(100vh - 60px);
+  padding: 10px;
 }
 
 aside ul {
@@ -13,4 +14,12 @@ aside ul {
 a {
   text-decoration: none;
   color: black;
+}
+
+.links li {
+  padding: 10px;
+}
+
+.links li:hover {
+  background: #f8f8f8;
 }

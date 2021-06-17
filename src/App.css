@@ -24,4 +24,5 @@ main {
   padding: 15px;
   background: #fff;
   border-radius: 7px;
+  border: 1px rgb(245, 245, 245) solid;
 }
