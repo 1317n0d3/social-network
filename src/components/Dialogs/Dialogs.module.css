@@ -25,6 +25,7 @@
 
 .userCard:hover {
   background: #f8f8f8;
+  border-radius: 3px;
 }
 
 .content {
@@ -35,4 +36,12 @@
 .contentChat {
   padding: 15px;
   background: #f5f5f5;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  height: 60px;
 }
