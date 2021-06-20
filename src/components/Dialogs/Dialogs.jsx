@@ -5,27 +5,37 @@ import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
+
+
+  // DATA
+  let dialogsData = [
+    {name: 'vasya', id: 1},
+    {name: 'sasha', id: 2},
+    {name: 'ivan', id: 3},
+    {name: 'pavel', id: 4},
+  ];
+  let messagesData = [
+    {message: 'hello world'},
+    {message: 'My first message'}
+  ];
+
+  // Elements
+  const dialogs = dialogsData.map(d => <Dialog name={d.name} id={d.id} />),
+    messages = messagesData.map(m => <Message message={m.message} />);
+
   return (
     <main>
       <div className={s.containerDialogs}>
         <div className={s.sidebar}>
-          <div className={s.users}>
-            <Dialog name="vasya" id="1" />
-            <Dialog name="sasha" id="2" />
-            <Dialog name="ivan" id="3" />
-            <Dialog name="pavel" id="4" />
-          </div>
+          { dialogs }
         </div>
-
-
         <div className={s.content}>
           <div className={s.contentHeader}>
             header
           </div>
           <div className={s.contentChat}>
             <div className={s.messages}>
-              <Message message="hello world" />
-              <Message message="My first message" />
+              { messages }
             </div>
             <div className={s.sendMessage}>
               <textarea name="" id="" cols="70" rows="1"></textarea>
