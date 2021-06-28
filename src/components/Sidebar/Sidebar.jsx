@@ -11,6 +11,7 @@ const Sidebar = (props) => {
           <NavLink to='/news'><li>News</li></NavLink>
           <NavLink to='/music'><li>Music</li></NavLink>
           <NavLink to='/settings'><li>Settings</li></NavLink>
+          <NavLink to='/friends'><li>Friends</li></NavLink>
         </ul>
       </aside>
   );
