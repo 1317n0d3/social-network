@@ -7,7 +7,6 @@ const MyPosts = (props) => {
     postRef = React.createRef();
 
   const sendPost = () => {
-    alert(postRef.current.value);
     props.addPost(postRef.current.value);
   };
 
