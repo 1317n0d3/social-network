@@ -8,6 +8,7 @@ const MyPosts = (props) => {
 
   const sendPost = () => {
     alert(postRef.current.value);
+    props.addPost(postRef.current.value);
   };
 
   return (

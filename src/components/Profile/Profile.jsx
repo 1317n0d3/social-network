@@ -12,7 +12,7 @@ const Profile = (props) => {
           ava
           profile info
         </div>
-        <MyPosts postsData={props.state.postsData} />
+        <MyPosts postsData={props.state.postsData} addPost={props.addPost} />
       </main>
   );
 }

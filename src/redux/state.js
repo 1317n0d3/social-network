@@ -1,4 +1,4 @@
-let state = {
+const state = {
   profilePage: {
     postsData: [
       {message: 'Hello', likeCount: 0},
@@ -26,6 +26,23 @@ let state = {
       {name: 'oleg', id: 5}
     ]
   }
-}
+};
+
+export const addPost = (postMessage) => {
+  const newPost = {
+    message: postMessage,
+    likeCount: 0
+  }
+
+  state.profilePage.postsData.push(newPost);
+};
+
+export const addMessage = (message) => {
+  const newMessage = {
+    message: message
+  }
+
+  state.dialogPage.messagesData.push(newMessage);
+};
 
 export default state;
