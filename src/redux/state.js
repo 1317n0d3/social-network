@@ -1,11 +1,10 @@
-import { rerenderEntireTree } from "../render";
-
 const state = {
   profilePage: {
     postsData: [
       {message: 'Hello', likeCount: 0},
       {message: 'My first post', likeCount: 10}
-    ]
+    ],
+    newPostText: ''
   },
   dialogPage: {
     dialogsData: [
@@ -17,7 +16,8 @@ const state = {
     messagesData: [
       {message: 'hello world'},
       {message: 'My first message'}
-    ]
+    ],
+    newMessageText: ''
   },
   sidebar: {
     friends: [
@@ -30,6 +30,17 @@ const state = {
   }
 };
 
+
+let rerenderEntireTree = () => {
+  console.log('state has been changed');
+};
+
+export const updatePostText = (text) => {
+  state.profilePage.newPostText = text;
+
+  rerenderEntireTree(state);
+}
+
 export const addPost = (postMessage) => {
   const newPost = {
     message: postMessage,
@@ -37,9 +48,16 @@ export const addPost = (postMessage) => {
   }
 
   state.profilePage.postsData.push(newPost);
+  state.profilePage.newPostText = '';
 
   rerenderEntireTree(state);
 };
+
+export const updateMessageText = (text) => {
+  state.dialogPage.newMessageText = text;
+
+  rerenderEntireTree(state);
+}
 
 export const addMessage = (message) => {
   const newMessage = {
@@ -47,7 +65,14 @@ export const addMessage = (message) => {
   }
 
   state.dialogPage.messagesData.push(newMessage);
+  state.dialogPage.newMessageText = '';
   
+  rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+
   rerenderEntireTree(state);
 };
 
