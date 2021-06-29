@@ -33,6 +33,9 @@ const store = {
   _callSubscriber() {
     console.log('state has been changed');
   },
+  getState() {
+    return this._state;
+  },
   updatePostText(text) {
     this._state.profilePage.newPostText = text;
 
