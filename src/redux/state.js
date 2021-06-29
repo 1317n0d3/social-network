@@ -71,6 +71,24 @@ const store = {
     this._callSubscriber = observer;
 
     this._callSubscriber(this._state);
+  },
+  dispatch(action) {
+    switch (action.type) {
+      case 'ADD-POST':
+        this.addPost(action.postMessage);
+        break;
+      case 'UPDATE-POST-TEXT':
+        this.updatePostText(action.text);
+        break;
+      case 'UPDATE-MESSAGE-TEXT':
+        this.updateMessageText(action.text);
+        break;
+      case 'ADD-MESSAGE':
+        this.addMessage(action.message);
+        break;
+      default:
+        break;
+    }
   }
 }
 

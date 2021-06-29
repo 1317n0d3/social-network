@@ -18,12 +18,10 @@ const App = (props) => {
         <Sidebar state={ props.state.sidebar } />
         <div className="main-wrapper__content">
           <Route path='/profile' render={ () => <Profile profilePage={props.state.profilePage}
-                                                          addPost={props.addPost}
-                                                          updatePostText={props.updatePostText} /> } />
+                                                          dispatch={props.dispatch} /> } />
 
           <Route path='/dialogs' render={ () => <Dialogs dialogPage={props.state.dialogPage}
-                                                          addMessage={props.addMessage}
-                                                          updateMessageText={props.updateMessageText} /> } />
+                                                          dispatch={props.dispatch} /> } />
 
           <Route path='/news' render={News} />
           <Route path='/music' render={Music} />

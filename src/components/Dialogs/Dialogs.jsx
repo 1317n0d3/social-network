@@ -9,8 +9,11 @@ const Dialogs = (props) => {
     messages = props.dialogPage.messagesData.map(m => <Message message={m.message} />),
     messageRef = React.createRef();
 
-  const sendMessage = () => props.addMessage(messageRef.current.value),
-    onMessageChange = () => props.updateMessageText(messageRef.current.value);
+  // const sendMessage = () => props.addMessage(messageRef.current.value),
+  //   onMessageChange = () => props.updateMessageText(messageRef.current.value);
+
+  const sendMessage = () => props.dispatch({type: 'ADD-MESSAGE', message: messageRef.current.value}),
+    onMessageChange = () => props.dispatch({type: 'UPDATE-MESSAGE-TEXT', text: messageRef.current.value});
 
   return (
     <main>
@@ -27,7 +30,7 @@ const Dialogs = (props) => {
               { messages }
             </div>
             <div className={s.sendMessage}>
-              <textarea name="" id="" cols="70" rows="1" ref={ messageRef } value={props.newMessageText} onChange={onMessageChange} />
+              <textarea name="" id="" cols="70" rows="1" ref={ messageRef } value={props.dialogPage.newMessageText} onChange={onMessageChange} />
               <button onClick={ sendMessage }>Send</button>
             </div>
           </div>
