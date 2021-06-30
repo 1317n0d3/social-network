@@ -4,20 +4,16 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  const posts = props.postsData.map( p => <Post message={p.message} likeCount={p.likeCount} />),
-    postRef = React.createRef();
-
-  // const sendPost = () => props.addPost(postRef.current.value),
-  //   onPostChange = () => props.updatePostText(postRef.current.value);
+  const posts = props.postsData.map( p => <Post message={p.message} likeCount={p.likeCount} />);
 
   const sendPost = () => props.dispatch(addPostActionCreator()),
-    onPostChange = () => props.dispatch(updatePostTextActionCreator(postRef.current.value));
+    onPostChange = (e) => props.dispatch(updatePostTextActionCreator(e.target.value));
 
   return (
     <div>
       My posts
       <div>
-        <textarea ref={ postRef } value={props.newPostText} onChange={onPostChange} />
+        <textarea value={props.newPostText} onChange={onPostChange} />
         <button onClick={ sendPost } >Send</button>
       </div>
       { posts }

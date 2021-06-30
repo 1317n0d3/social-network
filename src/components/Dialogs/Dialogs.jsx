@@ -7,14 +7,10 @@ import { addMessageActionCreator, updateMessageTextActionCreator } from '../../r
 
 const Dialogs = (props) => {
   const dialogs = props.dialogPage.dialogsData.map(d => <Dialog name={d.name} id={d.id} />),
-    messages = props.dialogPage.messagesData.map(m => <Message message={m.message} />),
-    messageRef = React.createRef();
-
-  // const sendMessage = () => props.addMessage(messageRef.current.value),
-  //   onMessageChange = () => props.updateMessageText(messageRef.current.value);
+    messages = props.dialogPage.messagesData.map(m => <Message message={m.message} />);
 
   const sendMessage = () => props.dispatch(addMessageActionCreator()),
-    onMessageChange = () => props.dispatch(updateMessageTextActionCreator(messageRef.current.value));
+    onMessageChange = (e) => props.dispatch(updateMessageTextActionCreator(e.target.value));
 
   return (
     <main>
@@ -31,7 +27,7 @@ const Dialogs = (props) => {
               { messages }
             </div>
             <div className={s.sendMessage}>
-              <textarea name="" id="" cols="70" rows="1" ref={ messageRef } value={props.dialogPage.newMessageText} onChange={onMessageChange} />
+              <textarea name="" id="" cols="70" rows="1" value={props.dialogPage.newMessageText} onChange={onMessageChange} />
               <button onClick={ sendMessage }>Send</button>
             </div>
           </div>
