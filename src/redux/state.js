@@ -41,9 +41,9 @@ const store = {
 
     this._callSubscriber(this._state);
   },
-  addPost(postMessage) {
+  addPost() {
     const newPost = {
-      message: postMessage,
+      message: this._state.profilePage.newPostText,
       likeCount: 0
     }
 
@@ -57,9 +57,9 @@ const store = {
 
     this._callSubscriber(this._state);
   },
-  addMessage(message) {
+  addMessage() {
     const newMessage = {
-      message: message
+      message: this._state.dialogPage.newMessageText
     }
 
     this._state.dialogPage.messagesData.push(newMessage);
@@ -75,7 +75,7 @@ const store = {
   dispatch(action) {
     switch (action.type) {
       case 'ADD-POST':
-        this.addPost(action.postMessage);
+        this.addPost();
         break;
       case 'UPDATE-POST-TEXT':
         this.updatePostText(action.text);
@@ -84,12 +84,18 @@ const store = {
         this.updateMessageText(action.text);
         break;
       case 'ADD-MESSAGE':
-        this.addMessage(action.message);
+        this.addMessage();
         break;
       default:
         break;
     }
   }
 }
+
+export const addPostActionCreator = () => ({type: 'ADD-POST'});
+export const updatePostTextActionCreator = (text) => ({type: 'UPDATE-POST-TEXT', text: text});
+
+export const addMessageActionCreator = () => ({type: 'ADD-MESSAGE'});
+export const updateMessageTextActionCreator = (text) => ({type: 'UPDATE-MESSAGE-TEXT', text: text});
 
 export default store;
