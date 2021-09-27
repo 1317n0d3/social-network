@@ -1,7 +1,21 @@
 const ADD_MESSAGE = 'ADD-MESSAGE',
   UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
 
-const dialogPageReducer = (state, action) => {
+let initialState = {
+  dialogsData: [
+    {name: 'nikolay', id: 1},
+    {name: 'sasha', id: 2},
+    {name: 'ivan', id: 3},
+    {name: 'pavel', id: 4},
+  ],
+  messagesData: [
+    {message: 'hello world'},
+    {message: 'My first message'}
+  ],
+  newMessageText: ''
+};
+
+const dialogPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_MESSAGE_TEXT:
       state.newMessageText = action.text;
