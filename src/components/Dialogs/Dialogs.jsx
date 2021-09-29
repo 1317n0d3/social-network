@@ -6,11 +6,13 @@ import Message from './Message/Message';
 import { addMessageActionCreator, updateMessageTextActionCreator } from '../../redux/dialogPageReducer';
 
 const Dialogs = (props) => {
-  const dialogs = props.dialogPage.dialogsData.map(d => <Dialog name={d.name} id={d.id} />),
-    messages = props.dialogPage.messagesData.map(m => <Message message={m.message} />);
+  let state = props.dialogPage;
 
-  const sendMessage = () => props.dispatch(addMessageActionCreator()),
-    onMessageChange = (e) => props.dispatch(updateMessageTextActionCreator(e.target.value));
+  const dialogs = state.dialogsData.map(d => <Dialog name={d.name} id={d.id} />),
+    messages = state.messagesData.map(m => <Message message={m.message} />);
+
+  const onSendMessage = () => props.sendMessage(),
+    onMessageChange = (e) => props.updateMessageText(e.target.value);
 
   return (
     <main>
@@ -27,8 +29,8 @@ const Dialogs = (props) => {
               { messages }
             </div>
             <div className={s.sendMessage}>
-              <textarea name="" id="" cols="70" rows="1" value={props.dialogPage.newMessageText} onChange={onMessageChange} />
-              <button onClick={ sendMessage }>Send</button>
+              <textarea name="" id="" cols="70" rows="1" value={state.newMessageText} onChange={onMessageChange} />
+              <button onClick={ onSendMessage }>Send</button>
             </div>
           </div>
         </div>
