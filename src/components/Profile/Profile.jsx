@@ -12,7 +12,7 @@ const Profile = (props) => {
           ava
           profile info
         </div>
-        <MyPostsContainer store={props.store} />
+        <MyPostsContainer />
       </main>
   );
 }
