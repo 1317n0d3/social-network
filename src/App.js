@@ -7,8 +7,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import Friends from './components/Friends/Friends';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import FriendsContainer from './components/Friends/FriendsContainer';
 
 const App = (props) => {
   return (
@@ -22,7 +22,7 @@ const App = (props) => {
           <Route path='/news' render={News} />
           <Route path='/music' render={Music} />
           <Route path='/settings' render={Settings} />
-          <Route path='/friends' render={Friends} />
+          <Route path='/friends' render={ () => <FriendsContainer /> } />
         </div>
       </div>
     </BrowserRouter>
