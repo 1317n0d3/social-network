@@ -12,7 +12,7 @@ const friendsPageReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((u) => {
-          if (u.userId === action.userId) {
+          if (u.id === action.id) {
             return { ...u, followed: true };
           }
           return u;
@@ -23,7 +23,7 @@ const friendsPageReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((u) => {
-          if (u.userId === action.userId) {
+          if (u.id === action.id) {
             return { ...u, followed: false };
           }
           return u;
@@ -38,13 +38,13 @@ const friendsPageReducer = (state = initialState, action) => {
   }
 };
 
-export const followActionCreator = (userId) => ({
+export const followActionCreator = (id) => ({
   type: FOLLOW,
-  userId,
+  id,
 });
-export const unfollowActionCreator = (userId) => ({
+export const unfollowActionCreator = (id) => ({
   type: UNFOLLOW,
-  userId,
+  id,
 });
 export const setUsersActionCreator = (users) => ({
   type: SET_USERS,
