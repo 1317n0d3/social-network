@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as axios from "axios";
 
 const Friends = (props) => {
-  if (props.users.length === 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        debugger;
-        props.setUsers(response.data.items);
-      });
-  }
+  useEffect(() => {
+    if (props.users.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          debugger;
+          props.setUsers(response.data.items);
+        });
+    }
+  });
 
   return (
     <main>
