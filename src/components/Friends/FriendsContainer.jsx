@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as axios from "axios";
 import {
-  followActionCreator,
-  setPageActionCreator,
-  setTotalCountActionCreator,
-  setUsersActionCreator,
-  toggleIsFetching,
-  unfollowActionCreator,
+  followAC,
+  setPageAC,
+  setTotalCountAC,
+  setUsersAC,
+  toggleIsFetchingAC,
+  unfollowAC,
 } from "../../redux/friendsPageReducer";
 import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
@@ -59,22 +59,22 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     follow: (id) => {
-      dispatch(followActionCreator(id));
+      dispatch(followAC(id));
     },
     unfollow: (id) => {
-      dispatch(unfollowActionCreator(id));
+      dispatch(unfollowAC(id));
     },
     setUsers: (users) => {
-      dispatch(setUsersActionCreator(users));
+      dispatch(setUsersAC(users));
     },
     setPage: (page) => {
-      dispatch(setPageActionCreator(page));
+      dispatch(setPageAC(page));
     },
     setTotalCount: (totalCount) => {
-      dispatch(setTotalCountActionCreator(totalCount));
+      dispatch(setTotalCountAC(totalCount));
     },
     toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetching(isFetching));
+      dispatch(toggleIsFetchingAC(isFetching));
     },
   };
 };
