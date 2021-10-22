@@ -17,6 +17,18 @@ const Friends = ({
 
   return (
     <main>
+      {users.map((u) => {
+        return (
+          <div key={u.id}>
+            <span>{u.name}</span>
+            {u.followed ? (
+              <button onClick={() => unfollow(u.id)}>Unfollow</button>
+            ) : (
+              <button onClick={() => follow(u.id)}>Follow</button>
+            )}
+          </div>
+        );
+      })}
       {pages.map((p) => {
         return (
           <span
@@ -29,18 +41,6 @@ const Friends = ({
           >
             {p + " "}
           </span>
-        );
-      })}
-      {users.map((u) => {
-        return (
-          <div key={u.id}>
-            <span>{u.name}</span>
-            {u.followed ? (
-              <button onClick={() => unfollow(u.id)}>Unfollow</button>
-            ) : (
-              <button onClick={() => follow(u.id)}>Follow</button>
-            )}
-          </div>
         );
       })}
     </main>
