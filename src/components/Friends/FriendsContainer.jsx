@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import * as axios from "axios";
 import {
   followActionCreator,
   setPageActionCreator,
@@ -8,6 +9,35 @@ import {
   unfollowActionCreator,
 } from "../../redux/friendsPageReducer";
 import Friends from "./Friends";
+
+const FriendsContainer = (props) => {
+  const [currentPage, setCurrentPage] = useState(props.page),
+    [pagesCount, setPagesCount] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?count=${props.count}&page=${props.page}`
+      )
+      .then((response) => {
+        setPagesCount(Math.ceil(props.totalCount / props.count));
+        props.setTotalCount(response.data.totalCount);
+        props.setUsers(response.data.items);
+      });
+  }, [currentPage]);
+
+  return (
+    <Friends
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      pagesCount={pagesCount}
+      users={props.users}
+      setPage={props.setPage}
+      follow={props.follow}
+      unfollow={props.unfollow}
+    />
+  );
+};
 
 let mapStateToProps = (state) => {
   return {
@@ -38,6 +68,4 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
-
-export default FriendsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer);

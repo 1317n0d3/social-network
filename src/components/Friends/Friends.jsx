@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
-import * as axios from "axios";
+import React from "react";
 
-const Friends = (props) => {
-  const [page, setPage] = useState(props.page),
-    [pagesCount, setPagesCount] = useState(0);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${props.count}&page=${props.page}`
-      )
-      .then((response) => {
-        setPagesCount(Math.ceil(props.totalCount / props.count));
-        props.setTotalCount(response.data.totalCount);
-        props.setUsers(response.data.items);
-      });
-  }, [page]);
-
+const Friends = ({
+  pagesCount,
+  page,
+  setCurrentPage,
+  setPage,
+  users,
+  unfollow,
+  follow,
+}) => {
   const pages = [];
 
   for (let i = 1; i <= pagesCount; i++) {
@@ -29,24 +21,24 @@ const Friends = (props) => {
         return (
           <span
             key={p}
-            className={props.page === p ? "selected" : ""}
+            className={page === p ? "selected" : ""}
             onClick={(e) => {
+              setCurrentPage(p);
               setPage(p);
-              props.setPage(p);
             }}
           >
             {p + " "}
           </span>
         );
       })}
-      {props.users.map((u) => {
+      {users.map((u) => {
         return (
           <div key={u.id}>
             <span>{u.name}</span>
             {u.followed ? (
-              <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
+              <button onClick={() => unfollow(u.id)}>Unfollow</button>
             ) : (
-              <button onClick={() => props.follow(u.id)}>Follow</button>
+              <button onClick={() => follow(u.id)}>Follow</button>
             )}
           </div>
         );
