@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Friends = ({
   pagesCount,
@@ -20,7 +21,9 @@ const Friends = ({
       {users.map((u) => {
         return (
           <div key={u.id}>
-            <span>{u.name}</span>
+            <NavLink to={"/profile/" + u.id}>
+              <span>{u.name}</span>
+            </NavLink>
             {u.followed ? (
               <button onClick={() => unfollow(u.id)}>Unfollow</button>
             ) : (
