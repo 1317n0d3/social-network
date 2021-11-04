@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import defaultAvatar from "./../../assets/images/avatar.png";
 
 const Friends = ({
   pagesCount,
@@ -22,6 +23,7 @@ const Friends = ({
         return (
           <div key={u.id}>
             <NavLink to={"/profile/" + u.id}>
+              <img src={u.photos.small ? u.photos.small : defaultAvatar} />
               <span>{u.name}</span>
             </NavLink>
             {u.followed ? (
