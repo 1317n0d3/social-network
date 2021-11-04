@@ -23,7 +23,10 @@ const Users = ({
         return (
           <div key={u.id}>
             <NavLink to={"/profile/" + u.id}>
-              <img src={u.photos.small ? u.photos.small : defaultAvatar} />
+              <img
+                src={u.photos.small || defaultAvatar}
+                alt={u.name + " avatar"}
+              />
               <span>{u.name}</span>
             </NavLink>
             {u.followed ? (
