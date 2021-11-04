@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import defaultAvatar from "./../../assets/images/avatar.png";
 
-const Friends = ({
+const Users = ({
   pagesCount,
   page,
   setCurrentPage,
@@ -52,4 +52,4 @@ const Friends = ({
   );
 };
 
-export default Friends;
+export default Users;

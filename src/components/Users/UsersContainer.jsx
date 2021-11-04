@@ -8,11 +8,11 @@ import {
   setUsers,
   toggleIsFetching,
   unfollow,
-} from "../../redux/friendsPageReducer";
-import Friends from "./Friends";
+} from "../../redux/usersPageReducer";
 import Preloader from "../common/Preloader/Preloader";
+import Users from "./Users";
 
-const FriendsContainer = (props) => {
+const UsersContainer = (props) => {
   const [currentPage, setCurrentPage] = useState(props.page),
     [pagesCount, setPagesCount] = useState(0);
 
@@ -33,7 +33,7 @@ const FriendsContainer = (props) => {
   return (
     <>
       {props.isFetching && <Preloader />}
-      <Friends
+      <Users
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         pagesCount={pagesCount}
@@ -48,11 +48,11 @@ const FriendsContainer = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    users: state.friendsPage.users,
-    page: state.friendsPage.page,
-    count: state.friendsPage.count,
-    totalCount: state.friendsPage.totalCount,
-    isFetching: state.friendsPage.isFetching,
+    users: state.usersPage.users,
+    page: state.usersPage.page,
+    count: state.usersPage.count,
+    totalCount: state.usersPage.totalCount,
+    isFetching: state.usersPage.isFetching,
   };
 };
 
@@ -63,4 +63,4 @@ export default connect(mapStateToProps, {
   setPage,
   setTotalCount,
   toggleIsFetching,
-})(FriendsContainer);
+})(UsersContainer);

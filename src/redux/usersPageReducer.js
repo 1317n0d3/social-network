@@ -13,7 +13,7 @@ let initialState = {
   isFetching: true,
 };
 
-const friendsPageReducer = (state = initialState, action) => {
+const usersPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW: {
       return {
@@ -79,4 +79,4 @@ export const toggleIsFetching = (isFetching) => ({
   isFetching,
 });
 
-export default friendsPageReducer;
+export default usersPageReducer;
