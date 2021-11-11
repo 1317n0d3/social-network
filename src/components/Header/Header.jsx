@@ -1,15 +1,15 @@
-import React from 'react';
-import s from './Header.module.css';
-import Search from './Search/Search';
-import SessionManager from './SessionManager/SessionManager';
+import React from "react";
+import s from "./Header.module.css";
+import Search from "./Search/Search";
+import SessionManager from "./SessionManager/SessionManager";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <Search />
-      <SessionManager />
+      <SessionManager {...props} />
     </header>
   );
-}
+};
 
 export default Header;

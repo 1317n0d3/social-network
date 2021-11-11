@@ -11,11 +11,17 @@ const Profile = (props) => {
     height: 200px;
   `;
 
+  const UserCard = styled.div`
+    display: flex;
+    justify-content: space-between;
+  `;
+
   return (
     <main>
-      <div>
+      <UserCard>
         <ProfileImage src={props.profile.photos.large} />
-      </div>
+        <span>{props.profile.fullName}</span>
+      </UserCard>
       <MyPostsContainer />
     </main>
   );
