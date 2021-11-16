@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import defaultAvatar from "./../../assets/images/avatar.png";
+import * as axios from "axios";
 
 const Users = ({
   pagesCount,
@@ -30,9 +31,50 @@ const Users = ({
               <span>{u.name}</span>
             </NavLink>
             {u.followed ? (
-              <button onClick={() => unfollow(u.id)}>Unfollow</button>
+              <button
+                onClick={() => {
+                  axios
+                    .delete(
+                      `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                      {
+                        withCredentials: true,
+                        headers: {
+                          "API-KEY": "d0362587-e54d-4d20-afac-25d227b52e1e",
+                        },
+                      }
+                    )
+                    .then((response) => {
+                      if (response.data.resultCode === 0) {
+                        unfollow(u.id);
+                      }
+                    });
+                }}
+              >
+                Unfollow
+              </button>
             ) : (
-              <button onClick={() => follow(u.id)}>Follow</button>
+              <button
+                onClick={() => {
+                  axios
+                    .post(
+                      `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                      {},
+                      {
+                        withCredentials: true,
+                        headers: {
+                          "API-KEY": "d0362587-e54d-4d20-afac-25d227b52e1e",
+                        },
+                      }
+                    )
+                    .then((response) => {
+                      if (response.data.resultCode === 0) {
+                        follow(u.id);
+                      }
+                    });
+                }}
+              >
+                Follow
+              </button>
             )}
           </div>
         );

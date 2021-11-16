@@ -20,7 +20,10 @@ const UsersContainer = (props) => {
     props.toggleIsFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${props.count}&page=${props.page}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${props.count}&page=${props.page}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         setPagesCount(Math.ceil(props.totalCount / props.count));
