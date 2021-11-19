@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import {
   follow,
   setPage,
@@ -11,6 +10,7 @@ import {
 } from "../../redux/usersPageReducer";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
+import { UsersAPI } from "../../api/api";
 
 const UsersContainer = (props) => {
   const [currentPage, setCurrentPage] = useState(props.page),
@@ -18,19 +18,12 @@ const UsersContainer = (props) => {
 
   useEffect(() => {
     props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${props.count}&page=${props.page}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        setPagesCount(Math.ceil(props.totalCount / props.count));
-        props.setTotalCount(response.data.totalCount);
-        props.setUsers(response.data.items);
-        props.toggleIsFetching(false);
-      });
+    UsersAPI.getUsers(props.count, props.page).then((response) => {
+      setPagesCount(Math.ceil(props.totalCount / props.count));
+      props.setTotalCount(response.totalCount);
+      props.setUsers(response.items);
+      props.toggleIsFetching(false);
+    });
   }, [currentPage]);
 
   return (
