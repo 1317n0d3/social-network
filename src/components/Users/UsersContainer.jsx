@@ -10,7 +10,7 @@ import {
 } from "../../redux/usersPageReducer";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
-import { UsersAPI } from "../../api/api";
+import { usersAPI } from "../../api/api";
 
 const UsersContainer = (props) => {
   const [currentPage, setCurrentPage] = useState(props.page),
@@ -18,7 +18,7 @@ const UsersContainer = (props) => {
 
   useEffect(() => {
     props.toggleIsFetching(true);
-    UsersAPI.getUsers(props.count, props.page).then((response) => {
+    usersAPI.getUsers(props.count, props.page).then((response) => {
       setPagesCount(Math.ceil(props.totalCount / props.count));
       props.setTotalCount(response.totalCount);
       props.setUsers(response.items);
