@@ -26,4 +26,16 @@ export const usersAPI = {
   }
 };
 
-export const profileAPI = {}
+export const profileAPI = {
+  getUserProfile(userId){
+    return instance
+      .get(`profile/${userId}`)
+  }
+}
+
+export const authAPI = {
+  getAuthData() {
+    return instance
+      .get(`auth/me`)
+  }
+}
