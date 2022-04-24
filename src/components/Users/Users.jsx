@@ -11,6 +11,8 @@ const Users = ({
   users,
   unfollow,
   follow,
+  followingProgress,
+  toggleFollowingProgress,
 }) => {
   const pages = [];
 
@@ -32,12 +34,15 @@ const Users = ({
             </NavLink>
             {u.followed ? (
               <button
+                disabled={followingProgress.some(id => id === u.id)}
                 onClick={() => {
+                  toggleFollowingProgress(true, u.id)
                   usersAPI.unfollowUser(u.id)
                     .then((response) => {
                       if (response.data.resultCode === 0) {
                         unfollow(u.id);
                       }
+                      toggleFollowingProgress(false, u.id)
                     });
                 }}
               >
@@ -45,12 +50,15 @@ const Users = ({
               </button>
             ) : (
               <button
+                disabled={followingProgress.some(id => id === u.id)}
                 onClick={() => {
+                  toggleFollowingProgress(true, u.id)
                   usersAPI.followUser(u.id)
                     .then((response) => {
                       if (response.data.resultCode === 0) {
                         follow(u.id);
                       }
+                      toggleFollowingProgress(false, u.id)
                     });
                 }}
               >
