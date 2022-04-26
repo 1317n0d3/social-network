@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import defaultAvatar from "./../../assets/images/avatar.png";
-import { usersAPI } from "../../api/api";
 
 const Users = ({
   pagesCount,

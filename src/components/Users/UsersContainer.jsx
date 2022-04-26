@@ -20,7 +20,7 @@ const UsersContainer = (props) => {
   useEffect(() => {
     props.getUsers(props.count, props.page)
     setPagesCount(Math.ceil(props.totalCount / props.count));
-  }, [currentPage, props.totalCount]);
+  }, [currentPage, props.totalCount, props]);
 
   return (
     <>

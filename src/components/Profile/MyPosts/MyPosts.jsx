@@ -1,9 +1,13 @@
 import React from 'react';
-import s from './MyPosts.module.css';
+// import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  const posts = props.postsData.map( p => <Post message={p.message} likeCount={p.likeCount} />);
+  const posts = props.postsData.map( (p, i) => <Post
+    message={p.message}
+    key={`post-${i}`}
+    likeCount={p.likeCount}
+  />);
   
   let newPostElement = React.createRef();
 

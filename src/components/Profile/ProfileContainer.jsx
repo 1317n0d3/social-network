@@ -1,20 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { setUserProfile } from "../../redux/profilePageReducer";
+import { getUserProfile } from "../../redux/profilePageReducer";
 import { withRouter } from "react-router";
-import { profileAPI } from "../../api/api";
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({ getUserProfile, match, profile }) => {
   useEffect(() => {
-    const userId = props.match.params.userId ? props.match.params.userId : 2;
-    profileAPI.getUserProfile(userId)
-      .then((response) => {
-        props.setUserProfile(response.data);
-      });
-  }, []);
+    getUserProfile(match.params.userId ? match.params.userId : 2);
+  }, [getUserProfile, match.params.userId]);
 
-  return <Profile {...props} />;
+  return <Profile profile={profile} />;
 };
 
 const mapStateToProps = (state) => {
@@ -23,6 +18,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setUserProfile })(
+export default connect(mapStateToProps, { getUserProfile })(
   withRouter(ProfileContainer)
 );
