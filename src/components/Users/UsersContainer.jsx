@@ -8,24 +8,19 @@ import {
   toggleIsFetching,
   unfollow,
   toggleFollowingProgress,
+  getUsers,
 } from "../../redux/usersPageReducer";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
-import { usersAPI } from "../../api/api";
 
 const UsersContainer = (props) => {
   const [currentPage, setCurrentPage] = useState(props.page),
     [pagesCount, setPagesCount] = useState(0);
 
   useEffect(() => {
-    props.toggleIsFetching(true);
-    usersAPI.getUsers(props.count, props.page).then((response) => {
-      setPagesCount(Math.ceil(props.totalCount / props.count));
-      props.setTotalCount(response.totalCount);
-      props.setUsers(response.items);
-      props.toggleIsFetching(false);
-    });
-  }, [currentPage]);
+    props.getUsers(props.count, props.page)
+    setPagesCount(Math.ceil(props.totalCount / props.count));
+  }, [currentPage, props.totalCount]);
 
   return (
     <>
@@ -64,4 +59,5 @@ export default connect(mapStateToProps, {
   setTotalCount,
   toggleIsFetching,
   toggleFollowingProgress,
+  getUsers,
 })(UsersContainer);

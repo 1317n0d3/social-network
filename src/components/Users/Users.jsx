@@ -35,32 +35,14 @@ const Users = ({
             {u.followed ? (
               <button
                 disabled={followingProgress.some(id => id === u.id)}
-                onClick={() => {
-                  toggleFollowingProgress(true, u.id)
-                  usersAPI.unfollowUser(u.id)
-                    .then((response) => {
-                      if (response.data.resultCode === 0) {
-                        unfollow(u.id);
-                      }
-                      toggleFollowingProgress(false, u.id)
-                    });
-                }}
+                onClick={() => { unfollow(u.id) }}
               >
                 Unfollow
               </button>
             ) : (
               <button
                 disabled={followingProgress.some(id => id === u.id)}
-                onClick={() => {
-                  toggleFollowingProgress(true, u.id)
-                  usersAPI.followUser(u.id)
-                    .then((response) => {
-                      if (response.data.resultCode === 0) {
-                        follow(u.id);
-                      }
-                      toggleFollowingProgress(false, u.id)
-                    });
-                }}
+                onClick={() => { follow(u.id) }}
               >
                 Follow
               </button>
