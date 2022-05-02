@@ -18,7 +18,7 @@ const UsersContainer = (props) => {
     [pagesCount, setPagesCount] = useState(0);
 
   useEffect(() => {
-    props.getUsers(props.count, props.page)
+    props.getUsers(props.count, props.page);
     setPagesCount(Math.ceil(props.totalCount / props.count));
   }, [currentPage, props.totalCount]);
 
@@ -35,6 +35,7 @@ const UsersContainer = (props) => {
         unfollow={props.unfollow}
         followingProgress={props.followingProgress}
         toggleFollowingProgress={props.toggleFollowingProgress}
+        isAuth={props.isAuth}
       />
     </>
   );
@@ -48,6 +49,7 @@ let mapStateToProps = (state) => {
     totalCount: state.usersPage.totalCount,
     isFetching: state.usersPage.isFetching,
     followingProgress: state.usersPage.followingProgress,
+    isAuth: state.auth.isAuth,
   };
 };
 

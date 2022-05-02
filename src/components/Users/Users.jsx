@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import defaultAvatar from "./../../assets/images/avatar.png";
 
@@ -12,12 +13,15 @@ const Users = ({
   follow,
   followingProgress,
   toggleFollowingProgress,
+  isAuth,
 }) => {
   const pages = [];
 
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
+
+  if (!isAuth) return <Redirect to={"/login"} />;
 
   return (
     <main>
@@ -33,15 +37,19 @@ const Users = ({
             </NavLink>
             {u.followed ? (
               <button
-                disabled={followingProgress.some(id => id === u.id)}
-                onClick={() => { unfollow(u.id) }}
+                disabled={followingProgress.some((id) => id === u.id)}
+                onClick={() => {
+                  unfollow(u.id);
+                }}
               >
                 Unfollow
               </button>
             ) : (
               <button
-                disabled={followingProgress.some(id => id === u.id)}
-                onClick={() => { follow(u.id) }}
+                disabled={followingProgress.some((id) => id === u.id)}
+                onClick={() => {
+                  follow(u.id);
+                }}
               >
                 Follow
               </button>
