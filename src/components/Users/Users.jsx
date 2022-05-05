@@ -5,7 +5,7 @@ import defaultAvatar from "./../../assets/images/avatar.png";
 
 const Users = ({
   pagesCount,
-  page,
+  currentPage,
   setCurrentPage,
   setPage,
   users,
@@ -22,6 +22,8 @@ const Users = ({
   }
 
   if (!isAuth) return <Redirect to={"/login"} />;
+
+  console.log(currentPage);
 
   return (
     <main>
@@ -57,20 +59,51 @@ const Users = ({
           </div>
         );
       })}
-      {pages.map((p) => {
-        return (
+      {
+        /* pages.map((p) => {
+          return (
+            <span
+              key={p}
+              // className={currentPage === p ? "selected" : ""}
+              style={currentPage === p ? { fontWeight: 900, fontSize: 60 } : {}}
+              onClick={(e) => {
+                setCurrentPage(p);
+                setPage(p);
+              }}
+            >
+              {p + " "}
+            </span>
+          );
+        }) */
+        <>
           <span
-            key={p}
-            className={page === p ? "selected" : ""}
+            key={1}
+            // className={currentPage === p ? "selected" : ""}
+            style={currentPage === 1 ? { fontWeight: 900, fontSize: 60 } : {}}
             onClick={(e) => {
-              setCurrentPage(p);
-              setPage(p);
+              setCurrentPage(1);
+              setPage(1);
             }}
           >
-            {p + " "}
+            1
           </span>
-        );
-      })}
+          <span
+            key={pages.length}
+            // className={currentPage === p ? "selected" : ""}
+            style={
+              currentPage === pages.length
+                ? { fontWeight: 900, fontSize: 60 }
+                : {}
+            }
+            onClick={(e) => {
+              setCurrentPage(pages.length);
+              setPage(pages.length);
+            }}
+          >
+            {pages.length}
+          </span>
+        </>
+      }
     </main>
   );
 };
