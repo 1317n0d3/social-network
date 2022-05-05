@@ -15,11 +15,15 @@ const Users = ({
   toggleFollowingProgress,
   isAuth,
 }) => {
-  const pages = [];
+  const pages = [1, pagesCount];
 
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
+  // for (let i = currentPage - 1; i <= pagesCount; i++) {
+  //   pages.push(i);
+  // }
+
+  // if(currentPage !== 1 && currentPage !== pagesCount) {
+
+  // }
 
   if (!isAuth) return <Redirect to={"/login"} />;
 
@@ -59,51 +63,46 @@ const Users = ({
           </div>
         );
       })}
-      {
-        /* pages.map((p) => {
-          return (
-            <span
-              key={p}
-              // className={currentPage === p ? "selected" : ""}
-              style={currentPage === p ? { fontWeight: 900, fontSize: 60 } : {}}
-              onClick={(e) => {
-                setCurrentPage(p);
-                setPage(p);
-              }}
-            >
-              {p + " "}
-            </span>
-          );
-        }) */
-        <>
-          <span
-            key={1}
-            // className={currentPage === p ? "selected" : ""}
-            style={currentPage === 1 ? { fontWeight: 900, fontSize: 60 } : {}}
-            onClick={(e) => {
-              setCurrentPage(1);
-              setPage(1);
-            }}
-          >
-            1
-          </span>
-          <span
-            key={pages.length}
-            // className={currentPage === p ? "selected" : ""}
-            style={
-              currentPage === pages.length
-                ? { fontWeight: 900, fontSize: 60 }
-                : {}
-            }
-            onClick={(e) => {
-              setCurrentPage(pages.length);
-              setPage(pages.length);
-            }}
-          >
-            {pages.length}
-          </span>
-        </>
-      }
+
+      <span
+        key={1}
+        // className={currentPage === p ? "selected" : ""}
+        style={currentPage === 1 ? { fontWeight: 900, fontSize: 60 } : {}}
+        onClick={(e) => {
+          setCurrentPage(1);
+          setPage(1);
+        }}
+      >
+        1
+      </span>
+      {currentPage !== 1 && currentPage !== pagesCount ? (
+        <span
+          key={currentPage}
+          // className={currentPage === p ? "selected" : ""}
+          style={{ fontWeight: 900, fontSize: 60 }}
+          onClick={(e) => {
+            setCurrentPage(currentPage);
+            setPage(currentPage);
+          }}
+        >
+          {currentPage}
+        </span>
+      ) : (
+        <></>
+      )}
+      <span
+        key={pagesCount}
+        // className={currentPage === p ? "selected" : ""}
+        style={
+          currentPage === pagesCount ? { fontWeight: 900, fontSize: 60 } : {}
+        }
+        onClick={(e) => {
+          setCurrentPage(pagesCount);
+          setPage(pagesCount);
+        }}
+      >
+        {pagesCount}
+      </span>
     </main>
   );
 };
