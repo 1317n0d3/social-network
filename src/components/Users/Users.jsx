@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import defaultAvatar from "./../../assets/images/avatar.png";
 
+//todo: add current page and '...' to navigation
 const Users = ({
   pagesCount,
   currentPage,
@@ -15,16 +16,6 @@ const Users = ({
   toggleFollowingProgress,
   isAuth,
 }) => {
-  const pages = [1, pagesCount];
-
-  // for (let i = currentPage - 1; i <= pagesCount; i++) {
-  //   pages.push(i);
-  // }
-
-  // if(currentPage !== 1 && currentPage !== pagesCount) {
-
-  // }
-
   if (!isAuth) return <Redirect to={"/login"} />;
 
   console.log(currentPage);
@@ -66,7 +57,6 @@ const Users = ({
 
       <span
         key={1}
-        // className={currentPage === p ? "selected" : ""}
         style={currentPage === 1 ? { fontWeight: 900, fontSize: 60 } : {}}
         onClick={(e) => {
           setCurrentPage(1);
@@ -78,7 +68,6 @@ const Users = ({
       {currentPage !== 1 && currentPage !== pagesCount ? (
         <span
           key={currentPage}
-          // className={currentPage === p ? "selected" : ""}
           style={{ fontWeight: 900, fontSize: 60 }}
           onClick={(e) => {
             setCurrentPage(currentPage);
@@ -92,7 +81,6 @@ const Users = ({
       )}
       <span
         key={pagesCount}
-        // className={currentPage === p ? "selected" : ""}
         style={
           currentPage === pagesCount ? { fontWeight: 900, fontSize: 60 } : {}
         }
